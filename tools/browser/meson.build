@@ -84,7 +84,7 @@ gda_browser_sources += gda_browser_sourcesf
 
 subdir('data')
 
-i18n.merge_file(
+browser_desktop = i18n.merge_file(
 	po_dir: join_paths(meson.source_root(),'po'),
 	type: 'desktop',
 	input: 'org.gnome.gda.Browser.desktop.in',
@@ -101,7 +101,8 @@ custom_target('org.gnome.gda.Browser.appdata',
 			],
 		input: 'org.gnome.gda.Browser.appdata.xml.in',
 		output: 'org.gnome.gda.Browser.appdata.xml',
-		install: true,
+        depends: browser_desktop
+        install: true,
 		install_dir: join_paths(get_option('datadir'),'metainfo')
 		)
 
